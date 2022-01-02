@@ -3,7 +3,7 @@ import requests
 import csv
 import wolframalpha
 import matplotlib.pyplot as plt
-from csv import reader
+from csv import writer
 import pandas as pd
 from scraper import getTextFromArticle
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -30,7 +30,7 @@ with open('details.csv', 'a') as f:
     writer_object = writer(f)
     details = []
     for i in range(len(titles)):
-        details.append(titles[i])
+        details.append(titles[i].get_text())
         details.append(writings[i])
         details.append(positivity[i])
     writer_object.writerow(details)
