@@ -14,6 +14,6 @@ for title in titles:
     #print("https://www.bbc.com"+title["href"])
     link = "https://www.bbc.com"+title["href"]
     data_new = requests.get(link)
-    soup_new = BeautifulSoup(data_new, lxml)
+    soup_new = BeautifulSoup(data_new, 'lxml')
     #print("-------------------")
     
