@@ -1,6 +1,8 @@
+from os import remove
 from bs4 import BeautifulSoup
 import requests
-
+from csv import reader
+import pandas as pd
 
 def getTextFromArticle(link:str):
     req = requests.get(link).text
@@ -15,4 +17,11 @@ def getTextFromArticle(link:str):
         returnString += '\n'
     
     return returnString
+
+def getMeanScores(csvfile:str):
+    data = pd.read_csv(csvfile)
+    scores = data["score"]
+    mean = lambda l:sum(l)/len(l)
+    return mean(scores)
+
 

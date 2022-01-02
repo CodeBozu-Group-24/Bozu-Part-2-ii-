@@ -5,7 +5,7 @@ import wolframalpha
 import matplotlib.pyplot as plt
 from csv import writer
 import pandas as pd
-from scraper import getTextFromArticle
+from scraper import getTextFromArticle, getMeanScores
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import re
 
@@ -36,7 +36,6 @@ for writing in writings:
     positivity_score = sentiment_dict['pos']
     positivity.append(positivity_score)
 
-
 with open('details.csv', 'w') as f:
     
     writer_object = writer(f)
@@ -45,4 +44,4 @@ with open('details.csv', 'w') as f:
         writer_object.writerow([title_text[i], writings[i], positivity[i]])
     f.close()   
  
-print("done")
+print("Mean score:" + str(sum(positivity)/len(positivity)))
