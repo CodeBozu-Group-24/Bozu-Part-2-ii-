@@ -16,4 +16,3 @@ def getTextFromArticle(link:str):
     
     return returnString
 
-print(getTextFromArticle("https://www.bbc.com/news/world-us-canada-59703761"))
