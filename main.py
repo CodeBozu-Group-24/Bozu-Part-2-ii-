@@ -11,6 +11,9 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 data = requests.get('https://www.bbc.com/news/topics/cp7r8vgl2lgt/donald-trump').text
 soup = BeautifulSoup(data, 'lxml')
 titles = soup.findAll('a', class_='qa-heading-link lx-stream-post__header-link')
+title_text = []
+for title in titles:
+    title_text.append(title.get_text())
 #links = []
 writings = []
 for title in titles:
@@ -26,11 +29,12 @@ for writing in writings:
     positivity_score = sentiment_dict['pos']
     positivity.append(positivity_score)
 
+
 with open('details.csv', 'a') as f:
     writer_object = writer(f)
     details = []
     for i in range(len(titles)):
-        details.append(titles[i].get_text())
+        details.append(title_text[i])
         details.append(writings[i])
         details.append(positivity[i])
     writer_object.writerow(details)
