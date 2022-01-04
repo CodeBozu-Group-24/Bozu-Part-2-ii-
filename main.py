@@ -39,7 +39,7 @@ for writing in writings:
 with open('details.csv', 'w') as f:
     
     writer_object = writer(f)
-    writer_object.writerow(["title", "content", "score"])
+    writer_object.writerow(["Title", "Content", "Score"])
     for i in range(len(title_text)):
         writer_object.writerow([title_text[i], writings[i], positivity[i]])
     f.close()   
