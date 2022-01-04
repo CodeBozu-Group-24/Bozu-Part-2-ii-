@@ -33,7 +33,7 @@ positivity = []
 for writing in writings:
     sid_obj = SentimentIntensityAnalyzer()
     sentiment_dict = sid_obj.polarity_scores(writing)
-    positivity_score = sentiment_dict['pos']
+    positivity_score = sentiment_dict['pos']*100
     positivity.append(positivity_score)
 
 with open('details.csv', 'w') as f:
@@ -44,4 +44,4 @@ with open('details.csv', 'w') as f:
         writer_object.writerow([title_text[i], writings[i], positivity[i]])
     f.close()   
  
-print("Mean score:" + str(sum(positivity)/len(positivity)))
+print("Mean score: " + str(sum(positivity)/len(positivity)))
