@@ -25,9 +25,12 @@ for title in titles:
     link = "https://www.bbc.com"+title["href"]
     #data_new = requests.get(link).text
     #soup_new = BeautifulSoup(data_new, 'lxml')
-    writingFinal = getTextFromArticle(link).encode("ascii", "ignore").decode()
-    writingFinal = re.sub("\n", " ", writingFinal)
-    writings.append(writingFinal)
+    try:
+        writingFinal = getTextFromArticle(link).encode("ascii", "ignore").decode()
+        writingFinal = re.sub("\n", " ", writingFinal)
+        writings.append(writingFinal)
+    except AttributeError:
+        writings.append('No Text')    
 
 positivity = []    
 for writing in writings:
